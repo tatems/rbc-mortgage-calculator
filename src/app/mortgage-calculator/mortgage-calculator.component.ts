@@ -19,7 +19,7 @@ export class MortgageCalculatorComponent {
       downPayment: this._fb.control(0, [Validators.min(0)]),
       years: this._fb.control(25, [Validators.min(1)]),
       months: this._fb.control(0, [Validators.min(0)]),
-      apr: this._fb.control(0, [Validators.min(0)]),
+      apr: this._fb.control(3.25, [Validators.min(0)]),
       periodType: this._fb.control(PeriodType.Monthly, [Validators.required])
     });
   }

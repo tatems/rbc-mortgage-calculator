@@ -1,0 +1,15 @@
+@import '../../../assets/styles/color';
+@import '../../../assets/styles/typography';
+
+:host {
+  display: block;
+  position: relative;
+}
+
+label span {
+  color: $headline;
+  display: block;
+  font-size: $font-body1;
+  font-weight: $font-weight-semibold;
+  margin-bottom: .25rem;
+}

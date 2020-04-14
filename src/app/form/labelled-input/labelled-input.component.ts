@@ -11,5 +11,5 @@ export class LabelledInputComponent {
   @Input() for: string;
   
   @Input() control: FormControl;
-  @Input() errors?: {[key: string]: string} = {'other': 'Field is invalid'};
+  @Input() errors?: {[key: string]: string} = {};
 }
