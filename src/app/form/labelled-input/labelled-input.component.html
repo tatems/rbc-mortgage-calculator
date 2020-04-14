@@ -1,0 +1,6 @@
+<label [attr.for]="for">
+  <span>{{ label }}</span>
+  <ng-content></ng-content>
+</label>
+<!-- TODO: Remove ngIf, let error component show it -->
+<div *ngIf="control.invalid">TODO: Errors</div>

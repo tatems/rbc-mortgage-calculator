@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { MortgageCalculatorComponent } from './mortgage-calculator.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AppFormModule } from '../form/form.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppFormModule
   ]
 })
 export class MortgageCalculatorModule {}

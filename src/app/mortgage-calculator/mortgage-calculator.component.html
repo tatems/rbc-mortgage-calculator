@@ -1,31 +1,28 @@
 <form [formGroup]="mortgageForm" (ngSubmit)="calculate()">
-  <label>
-    Total Cost
-    <input formControlName="totalCost" type="number">
-  </label>
-  <label>
-    Down Payment
-    <input formControlName="downPayment" type="number">
-  </label>
-  <label>
-    Years
-    <input formControlName="years" type="number">
-  </label>
-  <label>
-    Months
-    <input formControlName="months" type="number">
-  </label>
-  <label>
-    APR
-    <input formControlName="apr" type="number">
-  </label>
-  <label>
-    Payment Frequency
-    <select formControlName="periodType">
+  <app-labelled-input label="Total Cost" for="totalCost" [control]="mortgageForm.get('totalCost')">
+    <input formControlName="totalCost" name="totalCost" id="totalCost" type="number">
+  </app-labelled-input>
+  <app-labelled-input label="Down Payment" for="downPayment" [control]="mortgageForm.get('downPayment')">
+    <input formControlName="downPayment" type="number" name="downPayment" id="downPayment">
+  </app-labelled-input>
+  <app-labelled-input label="Years" for="years" [control]="mortgageForm.get('years')">
+    <input formControlName="years" type="number" name="years" id="years">
+  </app-labelled-input>
+  <app-labelled-input label="Months" for="months" [control]="mortgageForm.get('months')">
+    <input formControlName="months" type="number" name="months" id="months">
+  </app-labelled-input>
+  <app-labelled-input label="APR" for="apr" [control]="mortgageForm.get('apr')">
+    <input formControlName="apr" type="number" name="apr" id="apr">
+  </app-labelled-input>
+  <app-labelled-input label="Payment Frequency" for="periodType" [control]="mortgageForm.get('periodType')">
+    <select formControlName="periodType" name="periodType" id="periodType">
       <option *ngFor="let period of selectablePeriods" [ngValue]="period">{{period}}</option>
     </select>
-  </label>
-  <button type="submit">Submit</button>
+  </app-labelled-input>
+
+  <footer>
+    <button type="submit">Submit</button>
+  </footer>
 </form>
 
 <pre>
