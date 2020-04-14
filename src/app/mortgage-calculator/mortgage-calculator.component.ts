@@ -11,6 +11,8 @@ export class MortgageCalculatorComponent {
   mortgageForm: FormGroup;
   mortgageDetails?: MortgageDetails;
 
+  selectablePeriods: PeriodType[] = Object.values(PeriodType);
+
   constructor(private _fb: FormBuilder) {
     this.mortgageForm = this._fb.group({
       totalCost: this._fb.control(100000, [Validators.required, Validators.min(1)]),
@@ -20,9 +22,6 @@ export class MortgageCalculatorComponent {
       apr: this._fb.control(0, [Validators.min(0)]),
       periodType: this._fb.control(PeriodType.Monthly, [Validators.required])
     });
-
-    this.calculate()
-    console.log(this.mortgageDetails);
   }
 
   calculate(): void {

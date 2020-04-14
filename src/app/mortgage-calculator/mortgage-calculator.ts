@@ -1,8 +1,8 @@
 export enum PeriodType {
-  Monthly,
-  SemiMonthly,
-  BiWeekly,
-  Weekly
+  Monthly = 'Monthly',
+  SemiMonthly = 'Semi-Monthly',
+  BiWeekly = 'Bi-Weekly',
+  Weekly = 'Weekly'
 }
 
 export const PaymentPeriodsPerYear = new Map<PeriodType, number>([
@@ -41,8 +41,7 @@ export interface MortgageDetails {
  *
  * @returns A MortgageDetails object
  */
-export function calculateMortgageDetails(totalCost: number, downPayment: number, years: number, months: number, periodType: PeriodType, apr: number): MortgageDetails {
-  debugger
+export function calculateMortgageDetails(totalCost: number, downPayment: number, years: number, months: number, apr: number, periodType: PeriodType): MortgageDetails {
   const principal = totalCost - downPayment;
   const numberOfPayments = numberOfPaymentPeriods(years, months, periodType);
   const paymentAmount = calculatePayment(principal, numberOfPayments, apr, periodType);
@@ -52,9 +51,9 @@ export function calculateMortgageDetails(totalCost: number, downPayment: number,
   return {
     numberOfPayments,
     principal: principal / 100,
-    costOfBorrowing: costOfBorrowing / 100,
-    total: total / 100,
-    paymentAmount: paymentAmount / 100
+    costOfBorrowing: Math.floor(costOfBorrowing) / 100,
+    total: Math.floor(total) / 100,
+    paymentAmount: Math.floor(paymentAmount) / 100
   }
 }
 
