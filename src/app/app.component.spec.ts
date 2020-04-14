@@ -11,17 +11,9 @@ describe('AppComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-      imports: [
-        MortgageDetailsModule,
-        MortgageCalculatorModule
-      ],
-      providers: [
-        CurrencyPipe,
-        DecimalPipe
-      ]
+      declarations: [AppComponent],
+      imports: [MortgageDetailsModule, MortgageCalculatorModule],
+      providers: [CurrencyPipe, DecimalPipe]
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppComponent);
@@ -39,11 +31,11 @@ describe('AppComponent', () => {
 
     expect(component.mortgageDetails.length).toEqual(1);
     expect(uuid).toBeDefined();
-    expect(component.mortgageDetails[0]).toEqual({...details, uuid});
+    expect(component.mortgageDetails[0]).toEqual({ ...details, uuid });
   });
-  
+
   it('should remove a mortgage detail from the details list', () => {
-    component.mortgageDetails = [mockMortgageDetails(({uuid: '1'}))];
+    component.mortgageDetails = [mockMortgageDetails({ uuid: '1' })];
     expect(component.mortgageDetails.length).toEqual(1);
 
     component.deleteMortgage('1');

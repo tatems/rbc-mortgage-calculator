@@ -24,22 +24,13 @@ describe('MortgageDetailsComponent', () => {
     periodType: PeriodType.Weekly,
     total: 120000,
     costOfBorrowing: 20000
-  })
+  });
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        MortgageDetailsComponent
-      ],
-      imports: [
-        ReactiveFormsModule,
-        ComponentsModule,
-        AppFormModule
-      ],
-      providers: [
-        CurrencyPipe,
-        DecimalPipe
-      ]
+      declarations: [MortgageDetailsComponent],
+      imports: [ReactiveFormsModule, ComponentsModule, AppFormModule],
+      providers: [CurrencyPipe, DecimalPipe]
     }).compileComponents();
 
     fixture = TestBed.createComponent(MortgageDetailsComponent);
@@ -54,34 +45,34 @@ describe('MortgageDetailsComponent', () => {
 
   it('formats the details correctly', () => {
     expect(component.mortgageBreakdown).toEqual([
-      {label: 'Property Cost', value: '$100,000.00'},
-      {label: 'Down Payment', value: '$0.00'},
-      {label: 'Principal', value: '$100,000.00'},
-      {label: 'APR', value: '2.00%'},
-      {label: 'Amortization', value: '25 years 4 months'},
-      {label: 'Number of Payments', value: 100},
-      {label: 'Payment Amount', value: '$100.00'},
-      {label: 'Payment Frequency', value: PeriodType.Weekly},
-      {label: 'Total Cost', value: '$120,000.00'},
-      {label: 'Cost of Borrowing', value: '$20,000.00'},
-    ])
-  })
+      { label: 'Property Cost', value: '$100,000.00' },
+      { label: 'Down Payment', value: '$0.00' },
+      { label: 'Principal', value: '$100,000.00' },
+      { label: 'APR', value: '2.00%' },
+      { label: 'Amortization', value: '25 years 4 months' },
+      { label: 'Number of Payments', value: 100 },
+      { label: 'Payment Amount', value: '$100.00' },
+      { label: 'Payment Frequency', value: PeriodType.Weekly },
+      { label: 'Total Cost', value: '$120,000.00' },
+      { label: 'Cost of Borrowing', value: '$20,000.00' }
+    ]);
+  });
 
   it('formats the details correctly with no month value', () => {
-    component.mortgageDetails = {...component.mortgageDetails, months: 0};
+    component.mortgageDetails = { ...component.mortgageDetails, months: 0 };
     component.ngOnInit();
 
     expect(component.mortgageBreakdown).toEqual([
-      {label: 'Property Cost', value: '$100,000.00'},
-      {label: 'Down Payment', value: '$0.00'},
-      {label: 'Principal', value: '$100,000.00'},
-      {label: 'APR', value: '2.00%'},
-      {label: 'Amortization', value: '25 years'},
-      {label: 'Number of Payments', value: 100},
-      {label: 'Payment Amount', value: '$100.00'},
-      {label: 'Payment Frequency', value: PeriodType.Weekly},
-      {label: 'Total Cost', value: '$120,000.00'},
-      {label: 'Cost of Borrowing', value: '$20,000.00'},
-    ])
-  })
+      { label: 'Property Cost', value: '$100,000.00' },
+      { label: 'Down Payment', value: '$0.00' },
+      { label: 'Principal', value: '$100,000.00' },
+      { label: 'APR', value: '2.00%' },
+      { label: 'Amortization', value: '25 years' },
+      { label: 'Number of Payments', value: 100 },
+      { label: 'Payment Amount', value: '$100.00' },
+      { label: 'Payment Frequency', value: PeriodType.Weekly },
+      { label: 'Total Cost', value: '$120,000.00' },
+      { label: 'Cost of Borrowing', value: '$20,000.00' }
+    ]);
+  });
 });

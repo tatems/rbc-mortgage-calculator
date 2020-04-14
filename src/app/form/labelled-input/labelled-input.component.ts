@@ -1,4 +1,4 @@
-import { Component, Input, ContentChild } from "@angular/core";
+import { Component, Input, ContentChild } from '@angular/core';
 import { FormControl, FormControlDirective } from '@angular/forms';
 
 @Component({
@@ -9,7 +9,7 @@ import { FormControl, FormControlDirective } from '@angular/forms';
 export class LabelledInputComponent {
   @Input() label: string;
   @Input() for: string;
-  
+
   @Input() control: FormControl;
-  @Input() errorMessages?: {[key: string]: string} = {};
+  @Input() errorMessages?: { [key: string]: string } = {};
 }

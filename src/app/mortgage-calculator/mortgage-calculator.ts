@@ -38,8 +38,8 @@ export interface MortgageDetails {
   total: number;
   apr: number;
   periodType: PeriodType;
-  years: number,
-  months: number
+  years: number;
+  months: number;
 }
 
 /**
@@ -54,7 +54,14 @@ export interface MortgageDetails {
  *
  * @returns A MortgageDetails object
  */
-export function calculateMortgageDetails(propertyCost: number, downPayment: number, years: number, months: number, apr: number, periodType: PeriodType): MortgageDetails {
+export function calculateMortgageDetails(
+  propertyCost: number,
+  downPayment: number,
+  years: number,
+  months: number,
+  apr: number,
+  periodType: PeriodType
+): MortgageDetails {
   const principal = propertyCost - downPayment;
   const numberOfPayments = numberOfPaymentPeriods(years, months, periodType);
   const paymentAmount = calculatePayment(principal, numberOfPayments, apr, periodType);
@@ -73,21 +80,26 @@ export function calculateMortgageDetails(propertyCost: number, downPayment: numb
     years,
     months,
     periodType
-  }
+  };
 }
 
 export function numberOfPaymentPeriods(years: number, months: number, periodType: PeriodType): number {
-  return Math.floor((years + (months / 12)) * PaymentPeriodsPerYear.get(periodType));
+  return Math.floor((years + months / 12) * PaymentPeriodsPerYear.get(periodType));
 }
 
-export function calculatePayment(principal: number, numberOfPayments: number, apr: number, periodType: PeriodType): number {
+export function calculatePayment(
+  principal: number,
+  numberOfPayments: number,
+  apr: number,
+  periodType: PeriodType
+): number {
   if (apr === 0) {
     return principal / numberOfPayments;
   }
 
   const interestRatePerPeriod = apr / PaymentPeriodsPerYear.get(periodType);
   const x = Math.pow(1 + interestRatePerPeriod, numberOfPayments);
-  
+
   return (principal * x * interestRatePerPeriod) / (x - 1);
 }
 

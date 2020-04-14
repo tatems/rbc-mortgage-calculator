@@ -6,15 +6,9 @@ import { MortgageCalculatorModule } from './mortgage-calculator/mortgage-calcula
 import { MortgageDetailsModule } from './mortgage-details/mortgage-details.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    MortgageCalculatorModule,
-    MortgageDetailsModule
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, MortgageCalculatorModule, MortgageDetailsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

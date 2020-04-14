@@ -11,10 +11,10 @@ export class AppComponent {
   mortgageDetails: MortgageDetails[] = [];
 
   addMortgage(details: MortgageDetails): void {
-    this.mortgageDetails.unshift({...details, uuid: uuidV4()});
+    this.mortgageDetails.unshift({ ...details, uuid: uuidV4() });
   }
 
   deleteMortgage(uuidToDelete: string): void {
-    this.mortgageDetails = this.mortgageDetails.filter(({uuid}) => uuid !== uuidToDelete);
+    this.mortgageDetails = this.mortgageDetails.filter(({ uuid }) => uuid !== uuidToDelete);
   }
 }

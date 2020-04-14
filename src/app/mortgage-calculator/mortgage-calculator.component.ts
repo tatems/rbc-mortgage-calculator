@@ -1,5 +1,5 @@
-import { Component, Output, EventEmitter } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Component, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MortgageDetails, calculateMortgageDetails, PeriodType, dollarsToCents } from './mortgage-calculator';
 
 @Component({
@@ -30,8 +30,17 @@ export class MortgageCalculatorComponent {
       return;
     }
 
-    const {totalCost, downPayment, years, months, apr, periodType} = this.mortgageForm.value;
+    const { totalCost, downPayment, years, months, apr, periodType } = this.mortgageForm.value;
 
-    this.mortgageCalculate.emit(calculateMortgageDetails(dollarsToCents(totalCost), dollarsToCents(downPayment), years, months, apr / 100, periodType));
+    this.mortgageCalculate.emit(
+      calculateMortgageDetails(
+        dollarsToCents(totalCost),
+        dollarsToCents(downPayment),
+        years,
+        months,
+        apr / 100,
+        periodType
+      )
+    );
   }
 }

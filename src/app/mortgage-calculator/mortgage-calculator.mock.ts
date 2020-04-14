@@ -15,5 +15,5 @@ export function mockMortgageDetails(overrides: Partial<MortgageDetails> = {}): M
     years: faker.random.number(),
     months: faker.random.number(),
     ...overrides
-  }
+  };
 }

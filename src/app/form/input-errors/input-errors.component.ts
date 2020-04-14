@@ -1,9 +1,9 @@
-import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 const DEFAULT_ERRORS = {
   required: 'This field is required',
   other: 'This field is invalid'
-}
+};
 
 @Component({
   selector: 'app-input-errors',
@@ -12,8 +12,8 @@ const DEFAULT_ERRORS = {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputErrorsComponent {
-  @Input() inputErrors: {[key: string]: string} | null;
-  @Input() errorMessages: {[key: string]: string} = {};
+  @Input() inputErrors: { [key: string]: string } | null;
+  @Input() errorMessages: { [key: string]: string } = {};
 
   errorMessage(): string | null {
     if (!this.inputErrors) {
