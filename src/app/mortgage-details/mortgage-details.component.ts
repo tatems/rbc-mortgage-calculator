@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, OnChanges, SimpleChanges, Inject, Output, EventEmitter } from "@angular/core";
+import { Component, ChangeDetectionStrategy, Input, OnChanges, SimpleChanges, Inject, Output, EventEmitter, OnInit } from "@angular/core";
 import { MortgageDetails } from '../mortgage-calculator/mortgage-calculator';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import * as pluralize from 'pluralize';
@@ -12,11 +12,7 @@ interface MortgageBreakdownItem {
   selector: 'app-mortgage-details',
   templateUrl: './mortgage-details.component.html',
   styleUrls: ['./mortgage-details.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    CurrencyPipe,
-    DecimalPipe
-  ]
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MortgageDetailsComponent implements OnChanges {
   @Input() mortgageDetails: MortgageDetails;
@@ -25,12 +21,18 @@ export class MortgageDetailsComponent implements OnChanges {
 
   mortgageBreakdown: MortgageBreakdownItem[];
 
-  constructor(private _currencyPipe: CurrencyPipe, private _decimalPipe: DecimalPipe) {}
+  constructor(private _currencyPipe: CurrencyPipe, private _decimalPipe: DecimalPipe) { }
+
+  ngOnInit(): void {
+    this._buildMortgageBreakdown();
+  }
 
   ngOnChanges({mortgageDetails}: SimpleChanges): void {
+    console.log(this.mortgageDetails, this.mortgageBreakdown)
     if (mortgageDetails) {
       this._buildMortgageBreakdown();
     }
+    console.log(this.mortgageDetails, this.mortgageBreakdown)
   }
 
   remove(): void {
