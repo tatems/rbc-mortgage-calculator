@@ -11,5 +11,5 @@ export class LabelledInputComponent {
   @Input() for: string;
   
   @Input() control: FormControl;
-  @Input() errors?: {[key: string]: string} = {};
+  @Input() errorMessages?: {[key: string]: string} = {};
 }

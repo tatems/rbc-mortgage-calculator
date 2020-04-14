@@ -1,0 +1,73 @@
+@import '../../assets/styles/color';
+@import '../../assets/styles/typography';
+
+:host {
+  display: block;
+  padding: 2rem;
+  border-radius: .25rem;
+  background: $background-card;
+}
+
+.mortgageDetails-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mortgageDetails-headerText {
+  font-size: $font-h2;
+  font-weight: $font-weight-bold;
+}
+
+.mortgageDetails-headerPrice {
+  display: inline-block;
+  padding: .125rem .5rem;
+  border-radius: .25rem;
+  background: $secondary;
+  font-size: $font-h3;
+  font-weight: $font-weight-semibold;
+}
+
+.mortgageDetails-breakdown {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .5rem;
+  margin-top: 1rem;
+}
+
+.mortgageDetails-breakdownItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  
+  &::before {
+    content: '';
+    z-index: 0;
+    position: absolute;
+    top: -.125rem;
+    right: -.5rem;
+    bottom: -.125rem;
+    left: -.5rem;
+    background: $background-main;
+    border-radius: .25rem;
+    opacity: 0;
+    transition: opacity 150ms ease;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+.mortgageDetails-breakdownItemLabel {
+  z-index: 1;
+  font-size: $font-body1;
+  font-weight: $font-weight-regular;
+}
+
+.mortgageDetails-breakdownItemValue {
+  z-index: 1;
+  font-size: $font-h3;
+  font-weight: $font-weight-semibold;
+}

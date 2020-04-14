@@ -17,22 +17,35 @@ export const PaymentPeriodsPerYear = new Map<PeriodType, number>([
  *
  * @param numberOfPayments - Total number of payments over the life of the loan
  * @param paymentAmount - The amount owed each period (in dollars eg 100.10)
+ * @param propertyCost - The initial cost of the property
+ * @param downPayment - The initial down payment
  * @param principal - The total amount borrowed (in dollars eg 100.10)
  * @param costOfBorrowing - Amount of interested paid over the life of the loan (in dollars eg 100.10)
  * @param total - Total amount to pay off the loan (in dollars eg 100.10)
+ * @param apr - Annual interest rate for loan
+ * @param periodType - Payment period that describes frequency of payment
+ * @param years - Number of years
+ * @param months - Number of months (additive to number of years)
  */
 export interface MortgageDetails {
+  uuid?: string;
   numberOfPayments: number;
   paymentAmount: number;
+  propertyCost: number;
+  downPayment: number;
   principal: number;
   costOfBorrowing: number;
   total: number;
+  apr: number;
+  periodType: PeriodType;
+  years: number,
+  months: number
 }
 
 /**
  * Calculates mortgage payment, total, and cost of borrowing
  *
- * @param totalCost - Total amount to purchase property (in cents)
+ * @param propertyCost - Total amount to purchase property (in cents)
  * @param downPayment - Down payment amount (in cents)
  * @param years - Number of years
  * @param months - Number of months (additive to number of years)
@@ -41,8 +54,8 @@ export interface MortgageDetails {
  *
  * @returns A MortgageDetails object
  */
-export function calculateMortgageDetails(totalCost: number, downPayment: number, years: number, months: number, apr: number, periodType: PeriodType): MortgageDetails {
-  const principal = totalCost - downPayment;
+export function calculateMortgageDetails(propertyCost: number, downPayment: number, years: number, months: number, apr: number, periodType: PeriodType): MortgageDetails {
+  const principal = propertyCost - downPayment;
   const numberOfPayments = numberOfPaymentPeriods(years, months, periodType);
   const paymentAmount = calculatePayment(principal, numberOfPayments, apr, periodType);
   const total = paymentAmount * numberOfPayments;
@@ -50,10 +63,16 @@ export function calculateMortgageDetails(totalCost: number, downPayment: number,
 
   return {
     numberOfPayments,
+    propertyCost: propertyCost / 100,
+    downPayment: downPayment / 100,
     principal: principal / 100,
     costOfBorrowing: Math.floor(costOfBorrowing) / 100,
     total: Math.floor(total) / 100,
-    paymentAmount: Math.floor(paymentAmount) / 100
+    paymentAmount: Math.floor(paymentAmount) / 100,
+    apr: apr * 100,
+    years,
+    months,
+    periodType
   }
 }
 

@@ -15,7 +15,7 @@ export class InputErrorsComponent {
   @Input() inputErrors: {[key: string]: string} | null;
   @Input() errorMessages: {[key: string]: string} = {};
 
-  error(): string | null {
+  errorMessage(): string | null {
     if (!this.inputErrors) {
       return null;
     }

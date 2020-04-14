@@ -2,5 +2,4 @@
   <span>{{ label }}</span>
   <ng-content></ng-content>
 </label>
-<!-- TODO: Remove ngIf, let error component show it -->
-<div *ngIf="control.invalid">TODO: Errors</div>
+<app-input-errors [errorMessages]="errorMessages" [inputErrors]="control.errors"></app-input-errors>

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MortgageCalculatorModule } from './mortgage-calculator/mortgage-calculator.module';
+import { MortgageDetailsModule } from './mortgage-details/mortgage-details.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { MortgageCalculatorModule } from './mortgage-calculator/mortgage-calcula
   ],
   imports: [
     BrowserModule,
-    MortgageCalculatorModule
+    MortgageCalculatorModule,
+    MortgageDetailsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,12 @@
+<header class="mortgageDetails-header">
+  <span class="mortgageDetails-headerText">Mortgage Breakdown</span>
+  <span class="mortgageDetails-headerPrice">
+    {{ mortgageDetails.paymentAmount | currency }} {{ mortgageDetails.periodType }}
+  </span>
+</header>
+<div class="mortgageDetails-breakdown">
+  <div class="mortgageDetails-breakdownItem" *ngFor="let breakdownItem of mortgageBreakdown">
+    <span class="mortgageDetails-breakdownItemLabel">{{ breakdownItem.label }}</span>
+    <span class="mortgageDetails-breakdownItemValue">{{ breakdownItem.value }}</span>
+  </div>
+</div>
