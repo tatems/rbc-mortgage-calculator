@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { MortgageDetails, calculateMortgageDetails, PeriodType } from './mortgage-calculator';
+import { MortgageDetails, calculateMortgageDetails, PeriodType, dollarsToCents } from './mortgage-calculator';
 
 @Component({
   selector: 'app-mortgage-calculator',
@@ -20,6 +20,9 @@ export class MortgageCalculatorComponent {
       apr: this._fb.control(0, [Validators.min(0)]),
       periodType: this._fb.control(PeriodType.Monthly, [Validators.required])
     });
+
+    this.calculate()
+    console.log(this.mortgageDetails);
   }
 
   calculate(): void {
@@ -29,6 +32,6 @@ export class MortgageCalculatorComponent {
 
     const {totalCost, downPayment, years, months, apr, periodType} = this.mortgageForm.value;
 
-    this.mortgageDetails = calculateMortgageDetails(totalCost, downPayment, years, months, apr, periodType);
+    this.mortgageDetails = calculateMortgageDetails(dollarsToCents(totalCost), dollarsToCents(downPayment), years, months, apr / 100, periodType);
   }
 }
