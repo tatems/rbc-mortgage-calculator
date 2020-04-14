@@ -1,2 +1,2 @@
 <app-mortgage-calculator (mortgageCalculate)="addMortgage($event)"></app-mortgage-calculator>
-<app-mortgage-details *ngFor="let detail of mortgageDetails" [mortgageDetails]="detail"></app-mortgage-details>
+<app-mortgage-details *ngFor="let detail of mortgageDetails" [mortgageDetails]="detail" (removeMortgageDetails)="deleteMortgage($event)"></app-mortgage-details>
