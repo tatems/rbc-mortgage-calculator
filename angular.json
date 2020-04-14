@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "rbc-mortgage-calculator"
+    }
+  },
+  "defaultProject": "rbc-mortgage-calculator",
+  "cli": {
+    "analytics": false
+  }
 }
