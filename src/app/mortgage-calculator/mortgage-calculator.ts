@@ -21,9 +21,9 @@ export interface MortgageDetails {
 }
 
 //  [$100,000(1 + .00583)^360 x .00583] / [(1 + .00583)^360 - 1] 
-export function calculateMortgageDetails(cost: number, downPayment: number, years: number, extraMonths: number, periodType: PeriodType, apr: number): MortgageDetails {
-  const principal = cost - downPayment;
-  const numberOfPayments = numberOfPaymentPeriods(years, extraMonths, periodType);
+export function calculateMortgageDetails(totalCost: number, downPayment: number, years: number, months: number, periodType: PeriodType, apr: number): MortgageDetails {
+  const principal = totalCost - downPayment;
+  const numberOfPayments = numberOfPaymentPeriods(years, months, periodType);
   const paymentAmount = calculatePayment(principal, numberOfPayments, apr, periodType);
   const total = paymentAmount * numberOfPayments;
   const costOfBorrowing = total - principal;
@@ -37,8 +37,8 @@ export function calculateMortgageDetails(cost: number, downPayment: number, year
   }
 }
 
-export function numberOfPaymentPeriods(years: number, extraMonths: number, periodType: PeriodType): number {
-  return Math.floor((years + (extraMonths / 12)) * PaymentPeriodsPerYear.get(periodType));
+export function numberOfPaymentPeriods(years: number, months: number, periodType: PeriodType): number {
+  return Math.floor((years + (months / 12)) * PaymentPeriodsPerYear.get(periodType));
 }
 
 export function calculatePayment(principal: number, numberOfPayments: number, apr: number, periodType: PeriodType): number {
